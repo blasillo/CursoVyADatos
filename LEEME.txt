@@ -1,0 +1,2 @@
+Curso Visualización y Análisis de Datos
+(Introducción en Ciencia de los Datos con D3.js)
