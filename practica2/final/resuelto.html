@@ -77,8 +77,8 @@
 
 
     function dibujarDiagramaCompanias ( companias ) {
-        let configuracion = ; //TODO 1: completar el código para obtener la configuración
-        let escalas = ; //TODO 2: completar el código para obtener las escalas
+        let configuracion = configuracionDiagramaComapanias() ; //TODO 1: completar el código para obtener la configuración
+        let escalas = escalasDiagramaComapanias(companias, configuracion); //TODO 2: completar el código para obtener las escalas
         dibujarDiagramaBarras ( companias, escalas, configuracion );
         dibujarDiagramaEjes  ( companias, escalas, configuracion );
     }
@@ -94,12 +94,12 @@
         }
         //La parte ocupada por las barras va a ser el cuerpo.
         let alturaCuerpo = alto - margenes.top - margenes.bottom;
-        let anchuraCuerpo=  ;  //TODO 3: Calcular la anchura del cuerpo restando los márgenes laterales al ancho.
+        let anchuraCuerpo= ancho - margenes.left - margenes.right;  //TODO 3: Calcular la anchura del cuerpo restando los márgenes laterales al ancho.
     
         //El contenedor es el SVG donde se dibuja el diagrama. En el HTML hay un tag svg con id DiagramaCompanias
-        let contenedor = d3.select( ) //TODO 4: usar d3.select para seleccionar el elemento con id DiagramaCompanias
+        let contenedor = d3.select("#DiagramaCompanias") //TODO 4: usar d3.select para seleccionar el elemento con id DiagramaCompanias
         contenedor.attr("width", ancho)
-                    .attr("height", ); //TODO 5: Asignar la altura del contenedor
+                    .attr("height", alto); //TODO 5: Asignar la altura del contenedor
         
     
         return { ancho, alto, margenes, anchuraCuerpo, alturaCuerpo, contenedor }
@@ -107,11 +107,11 @@
 
     function escalasDiagramaComapanias(companias, configuracion) {
         let { anchuraCuerpo, alturaCuerpo } = configuracion;
-        let maxRutas = d3.max (  ); //TODO 6: Usar d3.max para obtener cual es el máximo de rutas.
+        let maxRutas = d3.max ( companias.map ( c => c.Rutas )); //TODO 6: Usar d3.max para obtener cual es el máximo de rutas.
     
         let escalaX = d3.scaleLinear()
-            .range ([ , ])  //TODO 7: Poner el rango vaya de 0 la la anchura del cuerpo
-            .domain([ , ]); //TODO 8: Poner que el dominio vaya de 0 al máximo de rutas
+            .range ([0, anchuraCuerpo])  //TODO 7: Poner el rango vaya de 0 la la anchura del cuerpo
+            .domain([0, maxRutas]);      //TODO 8: Poner que el dominio vaya de 0 al máximo de rutas
     
         let escalaY = d3.scaleBand()
             .range([0, alturaCuerpo])
@@ -128,13 +128,13 @@
         let cuerpo = contenedor.append("g").style("transform", `translate(${margenes.left}px,${margenes.top}px)`); //coloca una grupo para las barras
                             
         let barras = cuerpo.selectAll(".barra")
-                        .data() ; //TODO 9: Usar el método .data para enlazar las compañias con las barras (elementos con la clase barra)
+                        .data (companias); //TODO 9: Usar el método .data para enlazar las compañias con las barras (elementos con la clase barra)
     
         //Añadir un rectángulo por cada compañia
         barras.enter().append("rect")
             .attr("height", escalaY.bandwidth())
             .attr("y", (d) => escalaY( d.Nombre ))
-            .attr("width",  ) //TODO 10: hacer la anchura de la barra proporcional al número de rutas usando escalaX
+            .attr("width", (d) => escalaX( d.Rutas)) //TODO 10: hacer la anchura de la barra proporcional al número de rutas usando escalaX
             .attr("fill", "steelblue");
             
     }
@@ -150,9 +150,9 @@
                 .call(ejeX);
         
             let ejeY = d3.axisLeft(escalaY); //TODO 11: Crear un eje izquierdo para la escala Y
-            contenedor.  //TODO 12a: Añandir una tag g al contenedor
+            contenedor.append("g")  //TODO 12a: Añandir una tag g al contenedor
                      .style ("transform", `translate(${margenes.left}px,${margenes.top}px)`)
-                     .;  //TODO 12b: llamar al ejeY para que dibuje el eje a la izquierda
+                     .call(ejeY);  //TODO 12b: llamar al ejeY para que dibuje el eje a la izquierda
     }       
     
 
