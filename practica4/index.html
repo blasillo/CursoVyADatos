@@ -162,16 +162,16 @@
     function configuracionMapa () {
         let ancho = 600;
         let alto = 400;
-        let contenedor = ;                  //TODO 1: seleccionar el svg con id Mapa               
-        contenedor.attr("width",  )     //TODO 2: asignar anchura y altura del contenedor.
-                  .attr("height", );
+        let contenedor = d3.select("#Mapa");             
+        contenedor.attr("width", ancho)   
+                  .attr("height", alto );
     
         return {ancho, alto, contenedor};
     }
 
     function obtenerProyeccionMapa ( configuracion ) {
         let {ancho, alto} = configuracion;
-        let proyeccion = ; //TODO 3: Crear proyeccion de tipo Mercator.
+        let proyeccion = d3.geoMercator(); 
         proyeccion.scale(97)
                     .translate([ancho / 2, alto / 2 + 20])
                     
@@ -181,14 +181,15 @@
     }
 
     function dibujarMapaBase (contenedor , paises , proyeccion ){
-        let path = ; //TODO 4: crear un generador geoPath y asignarle su proyeccion
+        let path = d3.geoPath()
+                        .projection(proyeccion); 
         
         contenedor.selectAll("path")
             .data(paises)
             .enter()
                 .append("g") 
                 .append("path")
-                    .attr("d",  ) //TODO 5: usar el generador path para dibujar cada país
+                    .attr("d", path ) 
                     .attr("stroke", "#ccc")
                     .attr("fill", "#eee");
                     
