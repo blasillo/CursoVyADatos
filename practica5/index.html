@@ -256,13 +256,13 @@
                
         let circulos = contenedor.selectAll("circle");
         
-        circulos.        //TODO 1: enlazar los aeropuertos a los circulos con el método .data 
-                .        //TODO 2a: para cada aeropuerto
+        circulos.data (aeropuertos) 
+                .enter() 
                 .append("circle")                    
-                    .attr("r",  )  //TODO 2b : Asignar el radio a 1 
-                    .attr("cx", )  // TODO 2c: asignar el centro del circulo usando la proyeccion para convertir longitud y latitud a posicion x.
-                    .attr("cy", )  // TODO 2d: asignar el centro del circulo usando la proyeccion para convertir longitud y latitud a posicion y.
-                    .attr("fill", ); //TODO 2e: asignar el color a "steelblue"
+                    .attr("r", "1px") 
+                    .attr("cx", d => proyeccion ( [d.Longitud , d.Latitud])[0] )  
+                    .attr("cy", d => proyeccion ( [d.Longitud , d.Latitud])[1] )  
+                    .attr("fill" , "steelblue" ); 
     }
 
 
@@ -278,7 +278,7 @@
 
         dibujarMapa ( almacen.geoJSON );
 
-        almacen.aeropuertos = ; //TODO 3: añadir llamada a función para agrupar por aeropuerto
+        almacen.aeropuertos = agruparPorAeropuerto ( almacen.rutas ); 
         dibujarAeropuertos (almacen.aeropuertos);
     }
 
