@@ -12,14 +12,14 @@
                Poner el texto en blanco y añadir un padding de 5px
                2 líneas de código
             */
-            color: ;
-            padding: ;
+            color: #ffffff;
+            padding: 5px;
         }
 
         /* TODO 2
            Añadir un borde color negro de 1px alrededor de cala elemento SVG 
         */
-        svg {  }
+        svg { border: 1px solid black; }
 
         .VistaPrincipal {
             display: flex;
@@ -49,10 +49,10 @@
     let almacen = {};
 
     function cargarDatos() {
-        let datos = ;   //TODO 4: Añadir el código para cargar el archivo "rutasAereas.csv" | 1 línea
+        let datos = d3.csv ("/datos/rutasAereas.csv") ;//TODO 4: Añadir el código para cargar el archivo "rutasAereas.csv" | 1 línea
         return datos.then( rutas => {
             console.log('Datos leidos'); 
-            almacen.rutas   ;//TODO 5: Guardar las rutas en la variable almacen
+            almacen.rutas =  rutas;//TODO 5: Guardar las rutas en la variable almacen
             return almacen;
        })
     }
@@ -68,9 +68,9 @@
                 "Rutas": 0
             }
             
-            compania.Rutas ; //TODO 6: Incrementar el contador de número de rutas por compañia.
+            compania.Rutas += 1; //TODO 6: Incrementar el contador de número de rutas por compañia.
             
-            resultado[compania.ID] ; //TODO 7: Almacenar la información de la compañia en el diccionario con el id como clave.
+            resultado[compania.ID] = compania; //TODO 7: Almacenar la información en el diccionario de con el id como clave.
 
             return resultado;
         }, {})
@@ -79,8 +79,8 @@
         resultado = Object.keys(resultado).map( clave => resultado[clave])
 
         resultado = resultado.sort ( (c1,c2) => { 
-            return d3.descending (); //TODO 8: Ordenar los datos en orden descendente de rutas.
-        });
+            return d3.descending ( c1.Rutas, c2.Rutas );
+        });//TODO 8: Ordenar los datos en orden descendente de rutas.
 
         return resultado;
     }

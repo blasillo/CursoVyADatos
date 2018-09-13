@@ -72,8 +72,8 @@
         
         function loadData() {
             return Promise.all([
-                d3.csv("/rutasAeras.csv"),
-                d3.json("/mapas/countries.geo.json"),
+                d3.csv("/datos/rutasAereas.csv"),
+                d3.json("/mapas/countries.geo.json")
             ]).then(datasets => {
                 store.routes = datasets[0];
                 store.geoJSON = datasets[1]
