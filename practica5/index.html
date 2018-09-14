@@ -175,7 +175,6 @@
                     .attr("d", path ) 
                     .attr("stroke", "#ccc")
                     .attr("fill", "#eee");
-                    
     }
 
 
@@ -246,6 +245,8 @@
                     .attr("cx", d => proyeccion ( [d.Longitud , d.Latitud])[0] )  
                     .attr("cy", d => proyeccion ( [d.Longitud , d.Latitud])[1] )  
                     .attr("fill" , "steelblue" ); 
+
+        contenedor.selectAll("circle").data(aeropuertos).exit().remove();
     }
 
 
