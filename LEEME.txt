@@ -1,2 +1,4 @@
-Curso Visualizaci�n y An�lisis de Datos
-(Introducci�n en Ciencia de los Datos con D3.js)
+Curso Visualización y Análisis de Datos
+(Introducción en Ciencia de los Datos con D3.js)
+
+Acceso a código: https://codepen.io/collection/XLybjZ/
