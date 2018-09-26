@@ -11,3 +11,11 @@ https://codepen.io/collection/XLybjZ/
 
 https://goo.gl/forms/0H25a4nhttiIrwUM2
 
+## Presentaciones
+
+https://slides.com/blast-g/introduccion-a-la-visualizacion-de-datos
+
+https://slides.com/blast-g/d3-intro
+
+https://slides.com/blast-g/introduccion-a-la-ciencia-de-los-datos
+
