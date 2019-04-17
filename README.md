@@ -1,9 +1,9 @@
 # CursoVyADatos
 
 
-## Acceso a código 
+## Acceso a código de prácticas
 
-https://codepen.io/collection/XLybjZ/
+https://codepen.io/collection/XGZGGN/
 
 
 
@@ -13,9 +13,15 @@ https://goo.gl/forms/0H25a4nhttiIrwUM2
 
 ## Presentaciones
 
-https://slides.com/blast-g/introduccion-a-la-visualizacion-de-datos
 
-https://slides.com/blast-g/d3-intro
+https://drive.google.com/open?id=1FhdMMky0MUoW_TL3fIV2B4nK5S78Q9C8TLHAuOxLSFA
 
-https://slides.com/blast-g/introduccion-a-la-ciencia-de-los-datos
+https://drive.google.com/open?id=1U-UkyUbn0O6ba6_ICVm6-h500r3OC2RysPcsAkV1vUU
+
+https://drive.google.com/open?id=15S8DylPLieijlghgvjMd-cNPZ0Drqq0lZ8Ck1JiAMCs
+
+https://drive.google.com/open?id=1urfsXkQqE7O6h-rrzHykyRGqZe5tukSvWj60MLik_j4
+
+https://drive.google.com/open?id=1aHWDUX4amKbPq9Xw7p_YQHsVbnPnuCgLVVdW5lyQ-3E
+
 
